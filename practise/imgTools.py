@@ -1,9 +1,9 @@
 import os
-from PIL import Image
+from PIL import Image, ImageFile
 import numpy as np
 
 
-def load_image(image_path):
+def load_image(image_path: str) -> ImageFile.ImageFile:
     """
     Đọc ảnh từ đường dẫn cho trước và trả về đối tượng ảnh
     Args: image_path
@@ -17,7 +17,7 @@ def load_image(image_path):
         return None
 
 
-def is_image_file(file_path):
+def is_image_file(file_path: str) -> bool:
     """
     return: True - nếu là ảnh
             False - nếu khác ảnh
@@ -26,8 +26,8 @@ def is_image_file(file_path):
     return file_path.lower().endswith(extensions)
 
 
-def get_image_list(folder_path):
-    image_list = []
+def get_image_list(folder_path: str) -> list[ImageFile.ImageFile]:
+    image_list: list[ImageFile.ImageFile] = []
     if os.path.exists(folder_path) and os.path.isdir(folder_path):
         filenames = os.listdir(folder_path)
         for filename in filenames:
